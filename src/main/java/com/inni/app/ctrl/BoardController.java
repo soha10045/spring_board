@@ -93,7 +93,10 @@ public class BoardController {
 	}
 	//글 수정 처리 
 	@RequestMapping(value="/update",method=RequestMethod.POST)
-	 public String update(@ModelAttribute("boardVO")BoardVO boardVO) {
+	 public String update(HttpServletRequest req) {
+		BoardVO boardVO = new BoardVO();
+		boardVO.setNumber(req.getParameter("seq").);
+		 
 		boardService.update(boardVO);
 		
 		//바로 글보기로 이동한다 
