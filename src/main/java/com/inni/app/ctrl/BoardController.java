@@ -96,6 +96,10 @@ public class BoardController {
 	 public String update(HttpServletRequest req) {
 		BoardVO boardVO = new BoardVO();
 		boardVO.setNumber(req.getParameter("seq"));
+		boardVO.setName(req.getParameter("name"));
+		boardVO.setDesc(req.getParameter("desc"));
+		boardVO.setAge(req.getParameter("age"));
+		boardVO.setYn(req.getParameter("Yn"));
 		 
 		boardService.update(boardVO);
 		
