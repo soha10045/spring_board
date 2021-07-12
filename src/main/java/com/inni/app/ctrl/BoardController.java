@@ -95,7 +95,7 @@ public class BoardController {
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	 public String update(HttpServletRequest req) {
 		BoardVO boardVO = new BoardVO();
-		boardVO.setNumber(req.getParameter("seq").);
+		boardVO.setNumber(req.getParameter("seq"));
 		 
 		boardService.update(boardVO);
 		
