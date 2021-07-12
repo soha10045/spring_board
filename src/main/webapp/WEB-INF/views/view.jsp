@@ -32,8 +32,14 @@ $(document).ready(function(){
 	});
 	
 	$(".btn-danger").on("click",function(){
-		formObj.attr("action","/app/delete");
-		formObj.submit();
+		
+		var msg = confirm("글을 삭제하시겠습니까?")
+		if(msg){
+			formObj.attr("action","/app/delete");
+			formObj.submit();
+		}
+		
+		
 	});
 	
 	$(".btn-primary").on("click",function(){
