@@ -34,20 +34,27 @@
 		
 	});
 	
+	$("#joinButton").on("click",function(){
+		window.location.href="${pageContext.request.contextPath}/join"
+	});
+	
  });
 
 
 </script>
 <body>
 <h1>
-	Hello world!  
+	INNI's Spring board   
 </h1>
 
+<h4>로그인 </h4>
+
 <form action="login" id="loginForm" method="POST">
-	<input type="text" id="userId" name="userId" />
-	<input type="password" id="userPw" name="userPw" />
+	ID<input type="text" id="userId" name="userId" />
+Password<input type="password" id="userPw" name="userPw" />
 	<button type="button" id="loginButton">로그인</button>
-	<a href="${pageContext.request.contextPath}/join">회원가입</a>
+	<button type="button" id="joinButton">회원가입</button>
+	<%-- <a href="${pageContext.request.contextPath}/join">회원가입</a> --%>
 </form>
 </body>
 </html>
