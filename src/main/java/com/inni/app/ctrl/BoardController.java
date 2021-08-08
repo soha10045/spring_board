@@ -24,8 +24,14 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	
-	//게시판리스트
+	/**
+	 * 게시물 리스트
+	 * 
+	 * @author inni
+	 * @since 2021-08-08
+	 * @param model
+	 * @return String viewName
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	 public String list(Model model) {
 		List<BoardVO> list = boardService.selectAll();
@@ -35,6 +41,15 @@ public class BoardController {
 	}
 	//게시판 글보기 
 	
+	/**
+	 * 게시물 상세
+	 * 
+	 * @author inni
+	 * @since 2021-08-08
+	 * @param num 게시물번호
+	 * @param model
+	 * @return String viewName
+	 */
 	@RequestMapping(value="/view/{num}",method=RequestMethod.GET)
 	 public String detail(@PathVariable("num") int num, Model model) {
 		BoardVO paramVO = new BoardVO();
@@ -46,14 +61,18 @@ public class BoardController {
 		return "view";
 	}
 	
-	//글쓰기 폼 
+	/**
+	 * 글쓰기
+	 * 
+	 * @author inni
+	 * @since 2021-08-08
+	 * @return String insert
+	 */ 
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	 public String insertForm() {
 		return "insert";
 	}
-	
-	
-	
+
 	//글쓰기 처리 
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	 public String insert(HttpServletRequest req, HttpSession session) {
@@ -99,10 +118,7 @@ public class BoardController {
 		//바로 글보기로 이동한다 
 		return "redirect:view/"+boardVO.getNum();
 	}
-	
-	
-	
-	
+
 	//게시판삭제
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	 public String delete(HttpServletRequest req) {
@@ -113,32 +129,4 @@ public class BoardController {
 		boardService.delete(boardVO);
 		return "redirect:/list";
 	}
-	
-//	//삭제 다른 버젼
-//	@RequestMapping(value="/delete",method=RequestMethod.POST)
-//	 public String delete(@RequestParam("num") int num,
-//			 RedirectAttributes rttr) throws Exception{
-//		
-//		boardService.delete(num);
-//		
-//		rttr.addFlashAttribute("msg","success");
-//		 return "redirect:list";
-//	}
-	
-	//수정 다른버젼
-	
-//	@RequestMapping(value="/update", method= RequestMethod.GET)
-//	public void updateGet(int num , Model model) throws Exception{
-//		model.addAttribute(num);
-//	}
-//	
-	//수정처리 다른버젼
-//	@RequestMapping(value="/update",method = RequestMethod.POST)
-//	public String updatePost(BoardVO board, RedirectAttributes rttr) throws Exception{
-//		boardService.update(board);
-//		rttr.addFlashAttribute("msg","success");
-//		
-//		return "redirect:/list";
-//	}
-	
 }
