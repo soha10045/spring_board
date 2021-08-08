@@ -84,7 +84,6 @@ public class MemberController {
 	}
 
 	// 로그아웃처리
-
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutProcess(HttpSession session) {
 
